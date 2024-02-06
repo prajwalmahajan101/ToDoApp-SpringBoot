@@ -1,0 +1,900 @@
+{
+	"info": {
+		"_postman_id": "fa548a51-3c83-4eef-b552-716d411ad95b",
+		"name": "TodoApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20961150"
+	},
+	"item": [
+		{
+			"name": "Get All Todo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/todos",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"todos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Sucess",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/todos",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"todos"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 06 Feb 2024 14:49:46 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"SUCCESS\",\n    \"msg\": \"Successfully Fetched List of Todos\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"task\": \"Learn Java - Spring Boot\",\n            \"description\": \"Learn Java, Spring, Spring Boot\",\n            \"status\": \"in_progress\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Todo By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/todos/:id",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"todos",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1",
+							"description": "Todo Id"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Sucess",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/todos/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"todos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 06 Feb 2024 14:50:09 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"SUCCESS\",\n    \"msg\": \"Todo Successfully Fetched\",\n    \"data\": {\n        \"id\": 1,\n        \"task\": \"Learn Java - Spring Boot\",\n        \"description\": \"Learn Java, Spring, Spring Boot\",\n        \"status\": \"in_progress\"\n    }\n}"
+				},
+				{
+					"name": "Failure",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/todos/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"todos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "12"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 06 Feb 2024 15:51:38 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"FAILURE\",\n    \"msg\": \"Todo With given Id Not Found\",\n    \"data\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Filter By Status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/todos/status/:status",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"todos",
+						"status",
+						":status"
+					],
+					"variable": [
+						{
+							"key": "status",
+							"value": "in_progress",
+							"description": "Status you want to filter"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Valid Status",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/todos/status/:status",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"todos",
+								"status",
+								":status"
+							],
+							"variable": [
+								{
+									"key": "status",
+									"value": "in_progress",
+									"description": "Status you want to filter"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 06 Feb 2024 14:52:23 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"SUCCESS\",\n    \"msg\": \"Todo with Status in_progress fetched\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"task\": \"Learn Java - Spring Boot\",\n            \"description\": \"Learn Java, Spring, Spring Boot\",\n            \"status\": \"in_progress\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Invalid Status",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/todos/status/:status",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"todos",
+								"status",
+								":status"
+							],
+							"variable": [
+								{
+									"key": "status",
+									"value": "some_status",
+									"description": "Status you want to filter"
+								}
+							]
+						}
+					},
+					"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+					"code": 422,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 06 Feb 2024 15:52:07 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"FAILURE\",\n    \"msg\": \"Invalid Status\",\n    \"data\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Status",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/todos/:id/status/:status",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"todos",
+						":id",
+						"status",
+						":status"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1",
+							"description": "Id of Task You Want to update Status"
+						},
+						{
+							"key": "status",
+							"value": "in_progress",
+							"description": "new Status"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/todos/:id/status/:status",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"todos",
+								":id",
+								"status",
+								":status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "Id of Task You Want to update Status"
+								},
+								{
+									"key": "status",
+									"value": "complete",
+									"description": "new Status"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 06 Feb 2024 14:54:57 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"SUCCESS\",\n    \"msg\": \"Todo Marked complete\",\n    \"data\": {\n        \"id\": 1,\n        \"task\": \"Learn Java - Spring Boot\",\n        \"description\": \"Learn Java, Spring, Spring Boot\",\n        \"status\": \"complete\"\n    }\n}"
+				},
+				{
+					"name": "Failure - Id Not Found",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/todos/:id/status/:status",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"todos",
+								":id",
+								"status",
+								":status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "123",
+									"description": "Id of Task You Want to update Status"
+								},
+								{
+									"key": "status",
+									"value": "complete",
+									"description": "new Status"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 06 Feb 2024 15:52:48 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"FAILURE\",\n    \"msg\": \"Todo With given Id Not Found\",\n    \"data\": null\n}"
+				},
+				{
+					"name": "Failure - Invalid Status",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/todos/:id/status/:status",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"todos",
+								":id",
+								"status",
+								":status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "Id of Task You Want to update Status"
+								},
+								{
+									"key": "status",
+									"value": "some_status",
+									"description": "new Status"
+								}
+							]
+						}
+					},
+					"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+					"code": 422,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 06 Feb 2024 15:53:27 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"FAILURE\",\n    \"msg\": \"Invalid Status\",\n    \"data\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Todo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"task\":\"Test Todo Api\",\r\n    \"description\":\"Test Todo Springboot Rest Api with postman\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/todos",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"todos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"task\":\"Test Todo Api\",\r\n    \"description\":\"Test Todo Springboot Rest Api with postman\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/todos",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"todos"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 06 Feb 2024 15:54:06 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"SUCCESS\",\n    \"msg\": \"Todo Successfully created\",\n    \"data\": {\n        \"id\": 7,\n        \"task\": \"Test Todo Api\",\n        \"description\": \"Test Todo Springboot Rest Api with postman\",\n        \"status\": \"not_started\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Todo",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":2,\r\n    \"task\":\"Test/Gen Docs Todo Api\",\r\n    \"description\":\"Test Todo Springboot Rest Api with postman and generate Docs\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/todos",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"todos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Sucess",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":2,\r\n    \"task\":\"Test/Gen Docs Todo Api\",\r\n    \"description\":\"Test Todo Springboot Rest Api with postman and generate Docs\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/todos",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"todos"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 06 Feb 2024 15:00:16 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"SUCCESS\",\n    \"msg\": \"Todo Updated Successfully\",\n    \"data\": {\n        \"id\": 2,\n        \"task\": \"Test/Gen Docs Todo Api\",\n        \"description\": \"Test Todo Springboot Rest Api with postman and generate Docs\",\n        \"status\": \"not_started\"\n    }\n}"
+				},
+				{
+					"name": "Failure - Id Not Found",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":12,\r\n    \"task\":\"Test/Gen Docs Todo Api\",\r\n    \"description\":\"Test Todo Springboot Rest Api with postman and generate Docs\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/todos",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"todos"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 06 Feb 2024 15:55:49 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"FAILURE\",\n    \"msg\": \"Todo With given Id Not Found\",\n    \"data\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/todos/:id",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"todos",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "2",
+							"description": "Task Id You want To delete"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/todos/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"todos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2",
+									"description": "Task Id You want To delete"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 06 Feb 2024 15:02:43 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"SUCCESS\",\n    \"msg\": \"Todo Deleted Successfully\",\n    \"data\": null\n}"
+				},
+				{
+					"name": "Failure - Id Not Found",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/todos/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"todos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "21",
+									"description": "Task Id You want To delete"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 06 Feb 2024 15:54:53 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"FAILURE\",\n    \"msg\": \"Todo With given Id Not Found\",\n    \"data\": null\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "localhost:8080",
+			"type": "string"
+		}
+	]
+}
