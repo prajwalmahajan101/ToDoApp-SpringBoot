@@ -17,7 +17,7 @@ public class CustomResponse<T> extends ResponseEntity<Response<T>> {
     public CustomResponse(HttpStatus status,String msg){
         this(new Response<>(msg,null),status);
     }
-    public CustomResponse(HttpStatus status,Exception e){
-        this(new Response<>(e),status);
+    public CustomResponse(CustomException e){
+        this(new Response<>(e),e.getStatusCode());
     }
 }

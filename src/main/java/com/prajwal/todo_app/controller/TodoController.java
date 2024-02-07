@@ -2,6 +2,7 @@ package com.prajwal.todo_app.controller;
 
 import com.prajwal.todo_app.model.Todo;
 import com.prajwal.todo_app.service.TodoService;
+import com.prajwal.todo_app.util.CustomException;
 import com.prajwal.todo_app.util.CustomResponse;
 import com.prajwal.todo_app.util.TaskStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,8 @@ public class TodoController {
         try {
             Todo todo = service.getTodoById(todoId);
             return new CustomResponse<>(HttpStatus.OK,"Todo Successfully Fetched", todo);
-        } catch (Exception e) {
-            return new CustomResponse<>(HttpStatus.NOT_FOUND,e);
+        } catch (CustomException e) {
+            return new CustomResponse<>(e);
         }
     }
 
@@ -35,11 +36,10 @@ public class TodoController {
     public CustomResponse<List<Todo>> filterByStatus(@PathVariable("status") String status) {
         try {
             TaskStatus validStatus = TaskStatus.valueOf(status);
-            return new CustomResponse<>(HttpStatus.OK,"Todo with Status " + status + " fetched", service.fetchByStatus(validStatus));
+            List<Todo> todos = service.fetchByStatus(validStatus);
+            return new CustomResponse<>(HttpStatus.OK,"Todo with Status " + status + " fetched", todos);
         } catch (IllegalArgumentException e) {
-            return new CustomResponse<>(HttpStatus.UNPROCESSABLE_ENTITY,new Exception("Invalid Status"));
-        } catch (Exception e) {
-            return new CustomResponse<>(HttpStatus.NOT_FOUND,e);
+            return new CustomResponse<>(CustomException.invalidInput("Invalid Value for Status"));
         }
     }
 
@@ -55,9 +55,9 @@ public class TodoController {
             Todo todo = service.updateStatus(todoId, newStatus);
             return new CustomResponse<>(HttpStatus.OK,"Todo Marked " + status, todo);
         } catch (IllegalArgumentException e) {
-            return new CustomResponse<>(HttpStatus.UNPROCESSABLE_ENTITY,new Exception("Invalid Status"));
-        } catch (Exception e) {
-            return new CustomResponse<>(HttpStatus.NOT_FOUND,e);
+            return new CustomResponse<>(CustomException.invalidInput("Invalid Value for Status"));
+        } catch (CustomException e) {
+            return new CustomResponse<>(e);
         }
     }
 
@@ -66,8 +66,8 @@ public class TodoController {
         try {
             Todo updatedTodo = service.updateTodo(todo);
             return new CustomResponse<>(HttpStatus.OK,"Todo Updated Successfully", updatedTodo);
-        }catch (Exception e){
-            return new CustomResponse<>(HttpStatus.NOT_FOUND,e);
+        }catch (CustomException e){
+            return new CustomResponse<>(e);
         }
     }
 
@@ -76,8 +76,8 @@ public class TodoController {
         try {
             service.deleteTodo(id);
             return new CustomResponse<>(HttpStatus.OK,"Todo Deleted Successfully");
-        } catch (Exception e) {
-            return new CustomResponse<>(HttpStatus.NOT_FOUND,e);
+        } catch (CustomException e) {
+            return new CustomResponse<>(e);
         }
     }
 
