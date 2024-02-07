@@ -45,6 +45,7 @@ public class CustomException extends Exception {
         return new CustomException(HttpStatus.BAD_REQUEST,message);
     }
 
+
     public static CustomException badRequest(){
         return new CustomException(HttpStatus.BAD_REQUEST,"Bad Request");
     }

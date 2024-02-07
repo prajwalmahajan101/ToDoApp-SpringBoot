@@ -20,4 +20,7 @@ public class CustomResponse<T> extends ResponseEntity<Response<T>> {
     public CustomResponse(CustomException e){
         this(new Response<>(e),e.getStatusCode());
     }
+    public CustomResponse(CustomException e,T data){
+        this(new Response<>(e,data),e.getStatusCode());
+    }
 }

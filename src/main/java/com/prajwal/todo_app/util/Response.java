@@ -15,6 +15,11 @@ public class Response<T> {
         status = ResponseStatus.FAILURE;
         msg = e.getMessage();
     }
+    public Response(Exception e, T data) {
+        status = ResponseStatus.FAILURE;
+        msg = e.getMessage();
+        this.data=data;
+    }
 
     public ResponseStatus getStatus() {
         return status;
