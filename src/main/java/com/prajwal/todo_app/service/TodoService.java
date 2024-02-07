@@ -5,7 +5,6 @@ import com.prajwal.todo_app.repository.TodoRepository;
 import com.prajwal.todo_app.util.CustomException;
 import com.prajwal.todo_app.util.TaskStatus;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
