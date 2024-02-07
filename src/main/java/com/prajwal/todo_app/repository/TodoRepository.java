@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface TodoRepository extends JpaRepository<Todo, Integer> {
-    List<Todo> findByStatus(TaskStatus status);
+    List<Todo> findByStatusOrderById(TaskStatus status);
 }

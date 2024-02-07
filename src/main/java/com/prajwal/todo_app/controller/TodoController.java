@@ -4,6 +4,7 @@ import com.prajwal.todo_app.dto.NewTodoDTO;
 import com.prajwal.todo_app.dto.TodoDTO;
 import com.prajwal.todo_app.dto.UpdateTodoDTO;
 import com.prajwal.todo_app.service.TodoService;
+import com.prajwal.todo_app.service.TodoServiceImpl;
 import com.prajwal.todo_app.util.CustomException;
 import com.prajwal.todo_app.util.CustomResponse;
 import com.prajwal.todo_app.util.TaskStatus;
@@ -20,7 +21,7 @@ public class TodoController {
     private final TodoService service;
 
     @Autowired
-    public TodoController(TodoService service) {
+    public TodoController(TodoServiceImpl service) {
         this.service = service;
     }
 
@@ -31,7 +32,7 @@ public class TodoController {
 
     @GetMapping("{id}")
     public CustomResponse<TodoDTO> getTodo(@PathVariable("id") int todoId) throws CustomException {
-        TodoDTO todo = service.getTodoDTOById(todoId);
+        TodoDTO todo = service.getTodoById(todoId);
         return new CustomResponse<>(HttpStatus.OK, "Todo Successfully Fetched", todo);
 
     }
