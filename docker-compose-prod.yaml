@@ -1,3 +1,4 @@
+version: '3.8'
 services:
   postgres:
     container_name: todo_app_db
@@ -12,8 +13,8 @@ services:
       - postgres:/var/lib/postgresql/data
     networks:
       - todo_app_network
-  rest_api:
-    build: .
+  api:
+    image: 'prajwalmahajan101/todo_be:latest'
     ports:
       - '8080:8080'
     networks:
@@ -30,4 +31,3 @@ volumes:
 networks:
   todo_app_network:
     driver: bridge
-
